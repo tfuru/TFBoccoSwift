@@ -12,12 +12,12 @@ import Curry
 import Runes
 
 public struct Sensor {
-    let uuid:String
-    let userType:String
-    let nickname:String
-    let icon:String
-    let seller:String
-    let address:String
+    public let uuid:String
+    public let userType:String
+    public let nickname:String
+    public let icon:String
+    public let seller:String
+    public let address:String
 }
 
 extension Sensor: Decodable {

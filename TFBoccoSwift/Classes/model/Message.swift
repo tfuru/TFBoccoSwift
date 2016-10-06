@@ -12,12 +12,12 @@ import Curry
 import Runes
 
 public struct Message {
-    let id: Int
-    let uniqueId:String
-    let date:String
-    let media:String
-    let messageType:String
-    let user:User
+    public let id: Int
+    public let uniqueId:String
+    public let date:String
+    public let media:String
+    public let messageType:String
+    public let user:User
 }
 
 extension Message: Decodable{

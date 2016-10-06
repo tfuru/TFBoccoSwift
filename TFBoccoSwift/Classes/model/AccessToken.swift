@@ -12,8 +12,8 @@ import Curry
 import Runes
 
 public struct AccessToken {
-    let accessToken: String
-    let uuid: String
+    public let accessToken: String
+    public let uuid: String
 }
 
 extension AccessToken:Decodable {

@@ -12,9 +12,9 @@ import Curry
 import Runes
 
 public struct Member {
-    let user:User
-    let joinedAt:String
-    let readId:Int
+    public let user:User
+    public let joinedAt:String
+    public let readId:Int
 }
 
 extension Member: Decodable{

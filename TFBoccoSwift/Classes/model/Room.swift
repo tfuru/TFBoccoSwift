@@ -12,13 +12,13 @@ import Curry
 import Runes
 
 public struct Room {
-    let uuid: String
-    let name: String
-    let updatedAt: String
-    let backgroundImage: String
-    let members:[Member]
-    let messages:[Message]
-    let sensors:[Sensor]
+    public let uuid: String
+    public let name: String
+    public let updatedAt: String
+    public let backgroundImage: String
+    public let members:[Member]
+    public let messages:[Message]
+    public let sensors:[Sensor]
 }
 
 extension Room: Decodable{
