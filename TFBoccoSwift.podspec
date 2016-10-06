@@ -18,17 +18,17 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+BOCCO API β 
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/TFBoccoSwift'
+  s.homepage         = 'https://github.com/tfuru/TFBoccoSwift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'tfuru' => 't_sakura@m1.ffn.ne.jp' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/TFBoccoSwift.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'tfuru' => 't_furu@tf-web.jp' }
+  s.source           = { :git => 'https://github.com/tfuru/TFBoccoSwift.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/t_furu'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'TFBoccoSwift/Classes/**/*'
   
@@ -38,5 +38,8 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'AFNetworking', '~> 3.1'
+  s.dependency 'Argo', '~> 3.1'
+  s.dependency 'Curry', '~> 2.3'
+  s.dependency 'Runes', '~> 3.2'
 end
