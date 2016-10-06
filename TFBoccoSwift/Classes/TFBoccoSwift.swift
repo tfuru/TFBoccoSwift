@@ -186,7 +186,6 @@ public class Bocco {
         
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFJSONResponseSerializer()
-        manager.requestSerializer.setValue("js", forHTTPHeaderField: "Accept-Language")
         manager.GET(url, parameters: parameters,
                      success: { (task, responseObject) -> Void in
                         var messages:[Message] = []
