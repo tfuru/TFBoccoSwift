@@ -1,0 +1,20 @@
+//
+//  Config.swift-sample.swift
+//  TFBoccoSwift
+//
+//  Created by 古川信行 on 2016/10/07.
+//  Copyright © 2016年 CocoaPods. All rights reserved.
+//
+
+import Foundation
+
+class Config {
+    //BOCCO
+    //アカウント メールアドレス
+    static let BOCCO_ACCOUNT_EMAIL:String = "user@example.com";
+    //アカウント パスワード
+    static let BOCCO_ACCOUNT_PASSWORD:String = "strongpassword";
+    
+    //API キー
+    static let BOCCO_API_KEY:String = "dqdsj4vu5w7f0mb1zmi1f7jpfhitpuplxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+}
