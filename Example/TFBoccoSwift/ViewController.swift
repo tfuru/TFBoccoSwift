@@ -21,36 +21,64 @@ class ViewController: UIViewController {
             .setPassword(Config.BOCCO_ACCOUNT_PASSWORD)
             .createAccessToken({(accessToken: AccessToken?,error: NSError?)->Void in
                 print("callback")
-                print(" accessToken:\(accessToken)")
                 print(" error:\(error)")
+                if error != nil{
+                    print(" error:\(error)")
+                    return
+                }
+                print(" accessToken:\(accessToken)")
                 
                 //ルーム一覧を取得
                 Bocco.sharedInstance.getRooms({(rooms:[Room]?,error: NSError?)->Void in
                     print("callback")
+                    if error != nil{
+                        print(" error:\(error)")
+                        return
+                    }
+                    
                     print(" rooms:\(rooms)")
-                    print(" error:\(error)")
+                    if let room:Room = rooms![0] {
+                        //メッセージをルームに送信
+                        print(" room.uuid:\(room.uuid)")
+                        
+                        Bocco.sharedInstance.postTextMessage(room.uuid ,
+                            text: "はじめてのメッセージ",
+                            callback:{(message:Message?,error: NSError?)->Void in
+                                print("callback")
+                                if error != nil{
+                                    print(" error:\(error)")
+                                    return
+                                }
+                                print(" message:\(message)")
+                        })
+                        
+                        self.delay({ () -> Void in
+                            //メッセージ一覧を取得
+                            Bocco.sharedInstance.getMessages(room.uuid,
+                                callback:{(messages:[Message]?,error: NSError?)->Void in
+                                    print("callback")
+                                    if error != nil{
+                                        print(" error:\(error)")
+                                        return
+                                    }
+                                    print(" messages:\(messages)")
+                            })
+                        },delay: 10)
+                    }
                 })
                 
-                //メッセージをルームに送信
-                Bocco.sharedInstance.postTextMessage("f5020da2-f2ec-4d11-a1f9-7a21463a88ba",
-                    text: "はじめてのメッセージ",
-                    callback:{(message:Message?,error: NSError?)->Void in
-                        print("callback")
-                        print(" message:\(message)")
-                        print(" error:\(error)")
-                })
-                
-                //メッセージ一覧を取得
-                Bocco.sharedInstance.getMessages("f5020da2-f2ec-4d11-a1f9-7a21463a88ba",
-                    callback:{(messages:[Message]?,error: NSError?)->Void in
-                        print("callback")
-                        print(" messages:\(messages)")
-                        print(" error:\(error)")
-                })
                 
             })
     }
 
+    func delay(block: () -> Void,delay: Double = 0){
+        let delay = delay * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            block()
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
